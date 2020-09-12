@@ -13,7 +13,6 @@ class RegisterController extends Controller
     protected $clientId;
     protected $clientSecret;
     private $http;
-    protected $url = 'http://data.com/oauth/token';
 
     public function __construct(Guzzle $http)
     {
@@ -86,7 +85,7 @@ class RegisterController extends Controller
 
     public function getToken()
     {
-        $response = $this->http->post($this->url, [
+        $response = $this->http->post(env('PASS_PORT_URL'), [
             'form_params' => [
                 'grant_type' => 'password',
                 'client_id' => $this->clientId,
