@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c5f1f12a-2247-45c4-8c45-5d46c41af5f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Helps/common.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -158,7 +168,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../learn/laravel8-passport" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.splitter.proportion" value="0.017094016" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -187,6 +198,9 @@
       <updated>1599927146812</updated>
       <workItem from="1599927148112" duration="4079000" />
       <workItem from="1599931699122" duration="335000" />
+      <workItem from="1599958460377" duration="4330000" />
+      <workItem from="1600006961550" duration="8000000" />
+      <workItem from="1600015300199" duration="4401000" />
     </task>
     <servers />
   </component>
@@ -194,21 +208,33 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1353" y="516" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1600010485500">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1353" y="516" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600010485500" />
     <state x="304" y="399" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599927812111">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="304" y="399" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1599927812111" />
-    <state x="998" y="399" key="FileChooserDialogImpl" timestamp="1599929473683">
+    <state x="998" y="399" key="FileChooserDialogImpl" timestamp="1599961547445">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="998" y="399" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1599929473683" />
+    <state x="998" y="399" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1599961547445" />
+    <state x="1353" y="617" key="NewPhpFileDialog" timestamp="1600019427364">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1353" y="617" key="NewPhpFileDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600019427364" />
+    <state x="867" y="262" width="1421" height="883" key="SettingsEditor" timestamp="1600011598570">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="867" y="262" width="1421" height="883" key="SettingsEditor/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600011598570" />
     <state x="558" y="392" width="1634" height="795" key="find.popup" timestamp="1599929396688">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="558" y="392" width="1634" height="795" key="find.popup/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1599929396688" />
-    <state x="859" y="308" width="840" height="1034" key="search.everywhere.popup" timestamp="1599930730888">
+    <state x="859" y="308" width="840" height="1034" key="search.everywhere.popup" timestamp="1600014525965">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="859" y="308" width="840" height="1034" key="search.everywhere.popup/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1599930730888" />
+    <state x="859" y="308" width="840" height="1034" key="search.everywhere.popup/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600014525965" />
   </component>
 </project>

@@ -28,7 +28,7 @@ class RegisterController extends Controller
         return response()->json([
             'message' => '注册成功',
             'data' => json_decode((string)$this->getToken(), true)
-        ]);
+        ], 201);
     }
 
     public function login(Request $request)
@@ -52,25 +52,31 @@ class RegisterController extends Controller
             return response()->json([
                 'message' => '登陆成功',
                 'data' => json_decode((string)$this->getToken(), true),
-
-            ]);
+            ], 200);
         }
     }
 
     public function logout()
     {
-        $tokenModel = \Auth::user()->token();
-        $tokenModel->update([
-            'revoked' => 1,
-        ]);
-        \DB::table('oauth_refresh_tokens')
-            ->where(['access_token_id' => $tokenModel->id])->update([
-                'revoked' => 1,
-            ]);
+        revoked();
         return response()->json([
             'message' => '退出登陆成功',
-        ]);
+        ], 200);
 
+    }
+
+    public function refresh(Request $request)
+    {
+        $response = $this->http->post(env('PASS_PORT_URL'), [
+            'form_params' => [
+                'grant_type' => 'refresh_token',
+                'refresh_token' => $request->input('refresh_token'),
+                'client_id' => $this->clientId,
+                'client_secret' => $this->clientSecret,
+                'scope' => '*',
+            ],
+        ]);
+        return $response;
     }
 
     public function create(array $data)
