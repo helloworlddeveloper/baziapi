@@ -24,7 +24,7 @@ class PasswordResetMail extends Mailable
 
     public function build()
     {
-        return $this->from('aidybnt@126.com', '白小飞八字命盘管理系统')
+        return $this->from(env('MAIL_FROM_ADDRESS'), '白小飞八字命盘管理系统')
             ->subject('重置密码—白小飞八字命盘管理系统')
             ->view('api.resetPassword')
             ->with([

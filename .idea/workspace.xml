@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5f1f12a-2247-45c4-8c45-5d46c41af5f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/ChangePasswordRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mail/PasswordResetMail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_09_15_220135_add_passwordreset_id_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/api/activityMail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/api/resetPassword.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Helps/common.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Helps/common.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/PasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ResetPasswordRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/PasswordResetMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/PasswordResetMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/UserMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/UserMail.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +207,9 @@
       <workItem from="1600052840277" duration="1228000" />
       <workItem from="1600131836977" duration="23777000" />
       <workItem from="1600159117590" duration="16497000" />
+      <workItem from="1600181206132" duration="53000" />
+      <workItem from="1600181293814" duration="8000" />
+      <workItem from="1600182846734" duration="189000" />
     </task>
     <servers />
   </component>
