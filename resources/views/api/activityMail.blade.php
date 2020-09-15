@@ -87,7 +87,7 @@
                                                             <font style="vertical-align: inherit;">如果您在单击“激活账号”按钮时遇到问题，请将下面的URL复制并粘贴到Web浏览器中：</font>
                                                             <span class="break-all" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; word-break: break-all;">
                                                                 <a href="https://{{$url}}/api/activityMail?activity_token={{$token}}&activity_expire={{$time}}" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3869d4;">
-                                                                    <font style="vertical-align: inherit;">http</font>
+                                                                    <font style="vertical-align: inherit;">https</font>
                                                                 </a>
                                                             </span>
                                                             <font style="vertical-align: inherit;"> : </font>
