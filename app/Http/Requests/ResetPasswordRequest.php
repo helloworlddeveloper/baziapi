@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PasswordRequest extends BaseRequest
+class ResetPasswordRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,6 +15,7 @@ class PasswordRequest extends BaseRequest
     {
         return [
             'password' => 'bail|required|between:6,30',
+            'resetPassword' => 'bail|required|between:6,30',
         ];
     }
 
@@ -23,6 +24,8 @@ class PasswordRequest extends BaseRequest
         return [
             'password.required' => '请输入新的登陆密码',
             'password.between' => '密码位数6-30位',
+            'resetPassword.required' => '请输入新的登陆密码',
+            'resetPassword.between' => '密码位数6-30位',
         ];
     }
 }

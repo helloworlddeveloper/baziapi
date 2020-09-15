@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5f1f12a-2247-45c4-8c45-5d46c41af5f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Helps/common.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/ChangePasswordRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/PasswordResetMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_09_15_220135_add_passwordreset_id_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/api/activityMail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/api/resetPassword.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PasswordController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Helps/common.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Helps/common.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/PasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ResetPasswordRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,27 +166,32 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1hPyi6ngboAXK2infgDkjmjOpnb" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../learn/laravel8-passport" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/api" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="settings.editor.splitter.proportion" value="0.017094016" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\WWW\production\bazipaipan\baziapi\app\Http\Controllers\Api" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\WWW\production\bazipaipan\baziapi\resources\views\api" />
       <recent name="E:\WWW\production\bazipaipan\baziapi\app\Http\Controllers" />
       <recent name="E:\WWW\production\bazipaipan\baziapi\app\Http" />
       <recent name="E:\WWW\production\bazipaipan\baziapi\config" />
       <recent name="E:\WWW\production\bazipaipan\baziapi\database\migrations" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\WWW\production\bazipaipan\baziapi\app\Http\Controllers\Api" />
     </key>
   </component>
   <component name="RunManager">
@@ -200,41 +212,56 @@
       <workItem from="1599931699122" duration="335000" />
       <workItem from="1599958460377" duration="4330000" />
       <workItem from="1600006961550" duration="8000000" />
-      <workItem from="1600015300199" duration="4401000" />
+      <workItem from="1600015300199" duration="5282000" />
+      <workItem from="1600048385190" duration="603000" />
+      <workItem from="1600052840277" duration="1228000" />
+      <workItem from="1600131836977" duration="23777000" />
+      <workItem from="1600159117590" duration="16497000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="1353" y="516" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1600010485500">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1353" y="516" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600010485500" />
-    <state x="304" y="399" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599927812111">
+    <state x="996" y="137" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600163499643">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="304" y="399" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1599927812111" />
+    <state x="996" y="137" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600163499643" />
+    <state x="304" y="399" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600157748512">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="304" y="399" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600157748512" />
     <state x="998" y="399" key="FileChooserDialogImpl" timestamp="1599961547445">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="998" y="399" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1599961547445" />
-    <state x="1353" y="617" key="NewPhpFileDialog" timestamp="1600019427364">
+    <state x="1353" y="617" key="NewPhpFileDialog" timestamp="1600134442476">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1353" y="617" key="NewPhpFileDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600019427364" />
-    <state x="867" y="262" width="1421" height="883" key="SettingsEditor" timestamp="1600011598570">
+    <state x="1353" y="617" key="NewPhpFileDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600134442476" />
+    <state x="191" y="89" width="2214" height="1237" key="SettingsEditor" timestamp="1600178429055">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="867" y="262" width="1421" height="883" key="SettingsEditor/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600011598570" />
-    <state x="558" y="392" width="1634" height="795" key="find.popup" timestamp="1599929396688">
+    <state x="191" y="89" width="2214" height="1237" key="SettingsEditor/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600178429055" />
+    <state x="1006" y="598" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600171674409">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="558" y="392" width="1634" height="795" key="find.popup/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1599929396688" />
-    <state x="859" y="308" width="840" height="1034" key="search.everywhere.popup" timestamp="1600014525965">
+    <state x="1006" y="598" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600171674409" />
+    <state x="558" y="392" width="1634" height="795" key="find.popup" timestamp="1600158003247">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="859" y="308" width="840" height="1034" key="search.everywhere.popup/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600014525965" />
+    <state x="558" y="392" width="1634" height="795" key="find.popup/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600158003247" />
+    <state x="859" y="308" width="840" height="1034" key="search.everywhere.popup" timestamp="1600169519156">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="859" y="308" width="840" height="1034" key="search.everywhere.popup/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600169519156" />
   </component>
 </project>

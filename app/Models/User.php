@@ -46,6 +46,12 @@ use Laravel\Passport\HasApiTokens;
  * @property-read int|null $clients_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
  * @property-read int|null $tokens_count
+ * @property string $activity_token 激活验证token
+ * @property string|null $activity_expire 激活过期时间
+ * @property int $is_activity 是否激活1是，0否
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereActivityExpire($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereActivityToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsActivity($value)
  */
 class User extends Authenticatable
 {
@@ -53,7 +59,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         //是否允许插入的字段
-        'username', 'email', 'password', 'logo', 'photo', 'ip', 'user_type',
+        'username', 'email', 'password', 'logo', 'photo', 'ip', 'user_type', 'activity_token', 'activity_expire', 'is_activity'
     ];
 
 //    protected $guarded = [];
@@ -65,4 +71,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //passport替代email
+    public function findForPassport($username)
+    {
+        return $this->where('username', $username)->first();
+    }
 }
