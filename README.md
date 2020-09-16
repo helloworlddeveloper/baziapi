@@ -8,3 +8,18 @@ else {
     tests["body has access_token"] = false;
 }
 ````
+````
+php artisan ide-helper:generate
+php artisan ide-helper:models
+php artisan ide-helper:meta
+
+`````
+````
+{{Route::current()}}
+{{Route::currentRouteName()}}
+{{Route::currentRouteAction()}}
+{{Request::path()}}
+````
+
+php artisan db:seed --class=AdminSeeder
+
