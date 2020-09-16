@@ -5,34 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5f1f12a-2247-45c4-8c45-5d46c41af5f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminHomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminLoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/AdminAuth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/RevalidateBackHistory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Admin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_09_16_094753_create_admins_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/AdminSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/admin/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/gravatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/adminLogin.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/base/base.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/base/baseFoot.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/base/baseHead.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/home/adminHome.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/home/adminInfo.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/home/adminUserList.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layer/adminHead.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layer/adminLeft.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/baziapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/baziapi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PasswordReset.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PasswordReset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,15 +142,6 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
       <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
-      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
-      <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
-      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
-      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
-      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
-      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/laravel/passport" />
       <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
@@ -203,7 +171,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="settings.editor.splitter.proportion" value="0.017094016" />
   </component>
   <component name="RecentsManager">
@@ -251,6 +219,8 @@
       <workItem from="1600183912983" duration="705000" />
       <workItem from="1600214548839" duration="1581000" />
       <workItem from="1600216942296" duration="47777000" />
+      <workItem from="1600277667693" duration="371000" />
+      <workItem from="1600278147906" duration="1677000" />
     </task>
     <servers />
   </component>
@@ -285,10 +255,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1353" y="617" key="NewPhpFileDialog/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600264704352" />
-    <state x="191" y="89" width="2214" height="1237" key="SettingsEditor" timestamp="1600216933322">
+    <state x="191" y="89" width="2214" height="1237" key="SettingsEditor" timestamp="1600279247500">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="191" y="89" width="2214" height="1237" key="SettingsEditor/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600216933322" />
+    <state x="191" y="89" width="2214" height="1237" key="SettingsEditor/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1600279247500" />
     <state x="1006" y="598" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600263735588">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
