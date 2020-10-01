@@ -24,8 +24,8 @@ class UserMail extends Mailable
 
     public function build()
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'), '白小飞八字命盘管理系统')
-            ->subject('激活账号—白小飞八字命盘管理系统')
+        return $this->from(env('MAIL_FROM_ADDRESS'), '科学五行八字')
+            ->subject('激活账号—科学五行八字')
             ->view('api.activityMail')
             ->with([
                 'username' => $this->username,

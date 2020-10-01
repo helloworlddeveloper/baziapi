@@ -65,7 +65,7 @@ class RegisterController extends Controller
             });
 
         if ($user === false) {
-            return redirect('http://localhost:8080/login?active=' . '非法操作');
+            return redirect('https://bazi.water555.xyz/login?active=' . '非法操作');
         }
 
         //比对时间
@@ -75,11 +75,11 @@ class RegisterController extends Controller
         if ($user && $contrasTime) {
             $user->is_activity = 1;
             $user->save();
-            return redirect('http://localhost:8080/login?active=1');
+            return redirect('https://bazi.water555.xyz/login?active=1');
         } else {
             //激活超期，直接删除。
             User::where(['activity_token' => $request->activity_token])->delete();
-            return redirect('http://localhost:8080/login?active=' . '激活账号已经超期，请重新注册。');
+            return redirect('https://bazi.water555.xyz/login?active=' . '激活账号已经超期，请重新注册。');
         }
     }
 
