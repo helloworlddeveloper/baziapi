@@ -14,6 +14,7 @@ class PasswordController extends Controller
     /**
      * User: 白小飞
      * DateTime: 2020-09-15-0015 15:57
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      *
      * 点击忘记密码，然后给邮箱发送重置链接
@@ -30,7 +31,7 @@ class PasswordController extends Controller
         if ($user === false) {
             return response()->json([
                 'message' => '非注册邮箱，请重试。',
-            ], 403);
+            ], 422);
         }
 
         //如果Email匹配，发送重置链接，生成token和过期时间，并且存入数据库，传入邮件视图
@@ -77,7 +78,7 @@ class PasswordController extends Controller
             //全部判定为重置链接超期，直接删除对应passwordResets表数据。
             PasswordReset::where('email', $request->email)->delete();
             return response()->json([
-                'message' => '重置链接超期，请重新操作。',
+                'message' => '重置链接超期，请重新找回密码。',
             ], 403);
         }
     }
@@ -88,7 +89,7 @@ class PasswordController extends Controller
         if (!password_verify($request->password, \Auth::user()->password)) {
             return response()->json([
                 'message' => '原密码错误',
-            ], 403);
+            ], 422);
         }
 
         //修改密码

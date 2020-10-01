@@ -18,7 +18,7 @@ class CheckMail
         //如果找不到用户返回403
         if ($user === false) {
             return response()->json([
-                'message' => '账号或密码错误',
+                'message' => '账号或密码错误，请检查核对。',
             ], 403);
         }
 
@@ -26,10 +26,8 @@ class CheckMail
             return $next($request);
         } else {
             return response()->json([
-                'data' => [
-                    'message' => '请先到注册邮箱里激活账号。',
-                ]
-            ], 401);
+                'message' => '账号未激活，请先到注册邮箱里激活账号。',
+            ], 403);
         }
     }
 }

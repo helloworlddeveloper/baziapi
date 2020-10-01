@@ -6,7 +6,6 @@ use App\Http\Requests\BaseRequest;
 
 class RegisterRequest extends BaseRequest
 {
-
     public function authorize()
     {
         return true;

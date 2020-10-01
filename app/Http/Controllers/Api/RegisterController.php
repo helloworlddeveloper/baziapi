@@ -46,13 +46,13 @@ class RegisterController extends Controller
 
         return response()->json([
             'message' => '注册成功，请前往注册邮箱激活账号。',
-            'data' => json_decode((string)$this->getToken(), true),
+            'token' => json_decode((string)$this->getToken(), true),
             'mail' => [
                 'activity_token' => $user->activity_token,
                 'activity_expire' => $user->activity_expire,
                 'mailInfo' => \Mail::failures()
             ]
-        ], 201);
+        ], 200);
     }
 
     //激活账号
@@ -65,28 +65,22 @@ class RegisterController extends Controller
             });
 
         if ($user === false) {
-            return response()->json([
-                'message' => '非法操作',
-            ], 403);
+            return redirect('http://localhost:8080/login?active=' . '非法操作');
         }
 
         //比对时间
         $tomorrow = strtotime(date("Y-m-d H:m", strtotime("+ 3 day")));
-        $contrasTime = strtotime($user->activity_expire) > time();
+        $contrasTime = strtotime($request->activity_expire) > time();
 
         if ($user && $contrasTime) {
             $user->is_activity = 1;
             $user->save();
+            return redirect('http://localhost:8080/login?active=1');
         } else {
             //激活超期，直接删除。
             User::where(['activity_token' => $request->activity_token])->delete();
-            return response()->json([
-                'message' => '激活账号已经超期，请重新注册。',
-            ], 403);
+            return redirect('http://localhost:8080/login?active=' . '激活账号已经超期，请重新注册。');
         }
-        return response()->json([
-            'message' => '账号已激活，感谢您的注册。',
-        ], 200);
     }
 
     public function login(Request $request)
@@ -116,7 +110,6 @@ class RegisterController extends Controller
         ], 200);
 
     }
-
 
     public function refresh(Request $request)
     {
