@@ -37,7 +37,7 @@ class PasswordController extends Controller
         //如果Email匹配，发送重置链接，生成token和过期时间，并且存入数据库，传入邮件视图
         $mailData = array(
             'email' => $request->email,
-            'created_at' => date('Y-m-d H:i:s', strtotime('+1hour')),
+            'created_at' => date('Y-m-d H:i:s', strtotime('+ 1 day')),
             'token' => \Str::random(90),
         );
         //存入表
@@ -55,7 +55,7 @@ class PasswordController extends Controller
     {
         //校验是否过期
         //比对时间
-        $tomorrow = strtotime(date("Y-m-d H:m", strtotime("+ 3 day")));
+        //$tomorrow = strtotime(date("Y-m-d H:m", strtotime("+1hour")));
         $contrasTime = strtotime($request->created_at) > time();
 
         //校验数据

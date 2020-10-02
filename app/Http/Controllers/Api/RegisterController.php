@@ -69,7 +69,7 @@ class RegisterController extends Controller
         }
 
         //比对时间
-        $tomorrow = strtotime(date("Y-m-d H:m", strtotime("+ 3 day")));
+        //$tomorrow = strtotime(date("Y-m-d H:m", strtotime("+ 1 day")));
         $contrasTime = strtotime($request->activity_expire) > time();
 
         if ($user && $contrasTime) {
