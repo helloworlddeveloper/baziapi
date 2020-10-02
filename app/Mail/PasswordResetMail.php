@@ -28,8 +28,8 @@ class PasswordResetMail extends Mailable
             ->subject('重置密码—科学五行八字')
             ->view('api.resetPassword')
             ->with([
-                'username' => $this->created_at,
-                'time' => $this->email,
+                'username' => $this->email,
+                'time' => $this->created_at,
                 'token' => $this->token,
                 'url' => $_SERVER['SERVER_NAME']
             ]);
