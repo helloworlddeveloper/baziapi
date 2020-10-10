@@ -22,7 +22,7 @@ class ResetPasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'password.required' => '请输入新的登陆密码',
+            'password.required' => '原密码不能为空',
             'password.between' => '密码位数6-30位',
             'resetPassword.required' => '请输入新的登陆密码',
             'resetPassword.between' => '密码位数6-30位',

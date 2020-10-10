@@ -21,5 +21,15 @@ php artisan ide-helper:meta
 {{Request::path()}}
 ````
 
+php artisan passport:install
+
+php artisan make:migration create_add_users_isfoot_table
+
 php artisan db:seed --class=AdminSeeder
 
+php artisan storage:link
+
+来执行未执行过的迁移
+php artisan migrate
+
+php 配置 exec

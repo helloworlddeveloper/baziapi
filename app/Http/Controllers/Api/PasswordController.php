@@ -89,7 +89,7 @@ class PasswordController extends Controller
         if (!password_verify($request->password, \Auth::user()->password)) {
             return response()->json([
                 'message' => '原密码错误',
-            ], 422);
+            ], 403);
         }
 
         //修改密码

@@ -57,12 +57,26 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
-    protected $fillable = [
-        //是否允许插入的字段
-        'username', 'email', 'password', 'logo', 'photo', 'ip', 'user_type', 'activity_token', 'activity_expire', 'is_activity'
-    ];
+//    protected $fillable = [
+//        //是否允许插入的字段
+//        'id',
+//        'username',
+//        'email',
+//        'email_verified_at',
+//        'password',
+//        'head_logo',
+//        'avatar',
+//        'user_ip',
+//        'user_type',
+//        'activity_token',
+//        'activity_expire',
+//        'is_activity',
+//        'storage_1',
+//        'storage_2',
+//        'storage_3',
+//    ];
 
-//    protected $guarded = [];
+    protected $guarded = [];
 
     protected $hidden = [
         'password', 'remember_token',

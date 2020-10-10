@@ -1,5 +1,5 @@
 <?php
-sleep(1);
+//sleep(1);
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
