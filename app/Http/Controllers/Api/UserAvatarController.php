@@ -65,6 +65,7 @@ class UserAvatarController extends Controller
             $user->save();
             return response()->json([
                 'message' => '修改成功',
+                'TopLogo' => Storage::url($head_logo),
                 'TopLogoPath' => $head_logo,
             ], 200);
         } elseif ($request->TopLogoPath) {
@@ -77,6 +78,7 @@ class UserAvatarController extends Controller
                 $user->save();
                 return response()->json([
                     'message' => '修改成功',
+                    'TopLogo' => Storage::url($head_logo),
                     'TopLogoPath' => $head_logo,
                 ], 200);
             } else {
