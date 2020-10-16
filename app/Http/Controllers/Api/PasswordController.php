@@ -31,7 +31,7 @@ class PasswordController extends Controller
         if ($user === false) {
             return response()->json([
                 'message' => '非注册邮箱，请重试。',
-            ], 422);
+            ], 403);
         }
 
         //如果Email匹配，发送重置链接，生成token和过期时间，并且存入数据库，传入邮件视图

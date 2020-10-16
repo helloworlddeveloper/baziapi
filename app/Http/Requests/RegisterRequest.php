@@ -21,6 +21,7 @@ class RegisterRequest extends BaseRequest
             ],
             'email' => 'bail|required|email|unique:users',
             'password' => 'bail|required|between:6,30',
+            'user_ip' => 'ipv4'
         ];
     }
 
@@ -36,6 +37,7 @@ class RegisterRequest extends BaseRequest
             'email.unique' => '该Email已被注册 请更换',
             'password.required' => '请输入登陆密码',
             'password.between' => '密码位数6-30位',
+            'user_ip.ipv4' => 'IP地址非法',
         ];
     }
 }

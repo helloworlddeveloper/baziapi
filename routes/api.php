@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('throttle:60,1')->group(function () {     //1小时访问频率为60次
+Route::middleware('throttle:30,1')->group(function () {     //1小时访问频率为60次
     Route::middleware('auth:api')->group(function () {
         Route::post('/', [\App\Http\Controllers\Api\HomeController::class, 'userInfo'])
             ->name('home');
@@ -20,6 +20,13 @@ Route::middleware('throttle:60,1')->group(function () {     //1小时访问频�
 
         Route::post('/TopLogo', [\App\Http\Controllers\Api\UserAvatarController::class, 'TopLogo'])
             ->name('topLogo');
+
+        Route::prefix('/mingpan')->group(function () {
+            Route::post('/store', [\App\Http\Controllers\Api\MingPanController::class, 'store'])->name('store');
+            Route::post('/show', [\App\Http\Controllers\Api\MingPanController::class, 'show'])->name('show');
+            Route::post('/del', [\App\Http\Controllers\Api\MingPanController::class, 'del'])->name('del');
+            Route::post('/edit', [\App\Http\Controllers\Api\MingPanController::class, 'edit'])->name('edit');
+        });
     });
 
     Route::post('/register', [\App\Http\Controllers\Api\RegisterController::class, 'register'])

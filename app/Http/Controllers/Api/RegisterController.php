@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use GuzzleHttp\Client as Guzzle;
-use function Symfony\Component\String\s;
 
 class RegisterController extends Controller
 {
@@ -152,6 +151,10 @@ class RegisterController extends Controller
     //插入数据
     public function create(array $data)
     {
+        if (!in_array('user_ip', $data)) {
+            $data['user_ip'] = '';
+            print_r($data['user_ip']);
+        }
         //过期时间
         $tomorrow = date("Y-m-d H:m:s", strtotime("+ 1 day"));
         return User::create([
