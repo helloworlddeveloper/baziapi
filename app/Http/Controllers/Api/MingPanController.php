@@ -23,7 +23,7 @@ class MingPanController extends Controller
         ], 200);
     }
 
-    //显示数据
+    //查询数据
     public function show(Request $request)
     {
         if (!$request->input) {

@@ -14,8 +14,21 @@ class MingPanRequest extends FormRequest
     public function rules()
     {
         return [
-            'call' => 'required',
-            'id' => 'required|exists:users'
+            'call' => 'required|max:30',
+            'id' => 'required|exists:users',
+
+            'year' => 'max:4',
+            'month' => 'max:2',
+            'day' => 'max:2',
+            'hour' => 'max:2',
+            'minute' => 'max:2',
+            'sex' => 'max:1',
+            'name' => 'max:30',
+            'born' => 'max:100',
+            'area' => 'max:10',
+            'type' => 'max:1000',
+            'desc' => 'max:1000',
+            'baZiTime' => 'max:30',
         ];
     }
 
