@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5f1f12a-2247-45c4-8c45-5d46c41af5f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/TitleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Title.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/MingPanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/MingPanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MingPanEditRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/MingPanEditRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/MingPanRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/MingPanRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MingPan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MingPan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/api/resetPassword.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/api/resetPassword.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +257,7 @@
       <workItem from="1604046529194" duration="6433000" />
       <workItem from="1604069895307" duration="962000" />
       <workItem from="1604070877686" duration="5000" />
-      <workItem from="1604119940489" duration="1457000" />
+      <workItem from="1604119940489" duration="3508000" />
     </task>
     <servers />
   </component>
