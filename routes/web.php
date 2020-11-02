@@ -16,6 +16,13 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+Route::get('/sub', [\App\Http\Controllers\Api\webSocket\SystemMessageController::class, 'systemMessage'])->name('sub');
+
+Route::get('/sysMsg', function () {
+    event(new \App\Events\SystemMessage(['title' => 10, 'msg' => 'Tom']));
+})->name('sysMsg');
+
 Route::fallback(function () {
     return abort(403, 'Unauthorized');
 });
+

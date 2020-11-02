@@ -1,22 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Api\WebSocker;
+namespace App\Http\Controllers\Api\webSocket;
 
+use App\Events\UserSubscribe;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SystemMessageController extends Controller
 {
-    public function systemMessage()
+    public function systemMessage(Request $request)
     {
-        $userInfo = [
-            'username' => \Auth::user()->username,
-            'id' => \Auth::user()->id,
-            'user_type' => \Auth::user()->user_type
-        ];
-
-        return response()->json([
-            'data' => $userInfo
-        ]);
+        $user = User::find($request->id);
+        event(new UserSubscribe($user));
     }
 }

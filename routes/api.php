@@ -34,4 +34,8 @@ Route::middleware('throttle:30,1')->group(function () {     //1小时访问频�
     Route::post('/changePassword', [\App\Http\Controllers\Api\PasswordController::class, 'changePassword'])->name('changePassword');
     //提交重置密码
     Route::post('/doChangePassword', [\App\Http\Controllers\Api\PasswordController::class, 'doChangePassword'])->name('doChangePassword');
+
+    Route::prefix('/webSocket')->group(function () {
+        Route::get('/sys', [\App\Http\Controllers\Api\webSocket\SystemMessageController::class, 'systemMessage'])->name('sys');
+    });
 });

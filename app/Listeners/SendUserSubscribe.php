@@ -21,11 +21,11 @@ class SendUserSubscribe
     /**
      * Handle the event.
      *
-     * @param  UserSubscribe  $event
+     * @param UserSubscribe $event
      * @return void
      */
     public function handle(UserSubscribe $event)
     {
-        //
+        \Log::alert('测试' . $event->user->username);
     }
 }
