@@ -11,7 +11,7 @@ class TitleController extends Controller
     public function store(Title $request)
     {
         $user = User::find(\Auth::id());
-        if (!$user->user_type) {
+        if ($user->user_type != 1) {
             return response()->json([
                 'message' => '您还没有订阅，订阅用户特权。',
             ], 403);
