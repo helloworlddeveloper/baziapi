@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use DateTimeInterface;
 
 /**
  * App\Models\User
@@ -57,25 +58,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
-//    protected $fillable = [
-//        //是否允许插入的字段
-//        'id',
-//        'username',
-//        'email',
-//        'email_verified_at',
-//        'password',
-//        'head_logo',
-//        'avatar',
-//        'user_ip',
-//        'user_type',
-//        'activity_token',
-//        'activity_expire',
-//        'is_activity',
-//        'storage_1',
-//        'storage_2',
-//        'storage_3',
-//    ];
-
     protected $guarded = [];
 
     protected $hidden = [
@@ -90,5 +72,10 @@ class User extends Authenticatable
     public function findForPassport($username)
     {
         return $this->where('username', $username)->first();
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i');
     }
 }

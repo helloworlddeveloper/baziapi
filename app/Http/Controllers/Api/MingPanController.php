@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MingPanEditRequest;
 use App\Http\Requests\MingPanRequest;
 use App\Models\MingPan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Array_;
 
@@ -16,7 +17,13 @@ class MingPanController extends Controller
     //创建
     public function store(MingPanRequest $request)
     {
+        $total = MingPan::query()->where('user_id', \Auth::id())->count();
+        $user = User::find(\Auth::id());
+        $user->mingpantotal = $total;
+        $user->save();
+
         $data = $this->create($request->all());
+
         return response()->json([
             'message' => '创建成功',
             'data' => json_encode($data, JSON_UNESCAPED_UNICODE),
@@ -97,6 +104,11 @@ class MingPanController extends Controller
     //删除
     public function del(Request $request)
     {
+        $total = MingPan::query()->where('user_id', \Auth::id())->count();
+        $user = User::find(\Auth::id());
+        $user->mingpantotal = $total - 1;
+        $user->save();
+
         $delState = MingPan::destroy($request->id);
         if (!$delState) {
             return response()->json([

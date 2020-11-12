@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -10,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class SystemMessage implements ShouldBroadcast
+class RegisterUserEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,10 +20,14 @@ class SystemMessage implements ShouldBroadcast
      *
      * @return void
      */
+    public $user;
+    public $userId = '';
     public $msg;
 
-    public function __construct($msg)
+    public function __construct(User $user, $msg)
     {
+        $this->user = $user;
+        $this->userId = $this->user->id;
         $this->msg = $msg;
     }
 
@@ -33,7 +38,6 @@ class SystemMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        //公共频道
-        return new Channel('sysMsg');
+        return new PrivateChannel('user.' . $this->userId);
     }
 }

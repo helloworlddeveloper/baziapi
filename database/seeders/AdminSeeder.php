@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
     {
         \DB::table('admins')->insert([
             'username' => 'admin',
-            'password' => \Hash::make('abcd@1234')
+            'password' => \Hash::make('admin')
         ]);
     }
 }

@@ -23,19 +23,21 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'username' => $this->faker->name,
+            'username' => $this->faker->unique()->name,
             'email' => $this->faker->unique()->safeEmail,
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'user_type' => $this->faker->numberBetween(0, 1),
-            'ip' => $this->faker->ipv4,
-            'is_activity' => $this->faker->numberBetween(0, 1),
-            'activity_token' => '111',
             'email_verified_at' => $this->faker->dateTime,
-            'logo' => '',
-            'photo' => '',
-            'remember_token' => '222',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'head_logo' => '',
+            'avatar' => '',
+            'user_ip' => $this->faker->ipv4,
+            'user_type' => $this->faker->numberBetween(0, 1),
+            'activity_token' => '111',
             'activity_expire' => $this->faker->dateTime,
-
+            'is_activity' => $this->faker->numberBetween(0, 1),
+            'storage_1' => '',
+            'storage_2' => '',
+            'storage_3' => '',
+            'remember_token' => '222',
         ];
     }
 }

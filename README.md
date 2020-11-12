@@ -88,3 +88,5 @@ git config --global http.proxy "127.0.0.1:12000"
         proxy_set_header X-Forwarded-For $remote_addr;
     }   
 ````
+
+php artisan passport:client --password --provider

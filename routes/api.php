@@ -24,6 +24,15 @@ Route::middleware('throttle:30,1')->group(function () {     //1小时访问频�
             Route::post('/del', [\App\Http\Controllers\Api\MingPanController::class, 'del'])->name('del');
             Route::post('/edit', [\App\Http\Controllers\Api\MingPanController::class, 'edit'])->name('edit');
         });
+
+        Route::post('getMessage', [\App\Http\Controllers\Api\GetMessageController::class, 'getMessage']);
+
+        Route::post('isread', [\App\Http\Controllers\Api\GetMessageController::class, 'isread']);
+        Route::post('isrevoke', [\App\Http\Controllers\Api\GetMessageController::class, 'isrevoke']);
+
+        Route::post('pisread', [\App\Http\Controllers\Api\GetMessageController::class, 'privateIsRead']);
+        Route::post('pisrevoke', [\App\Http\Controllers\Api\GetMessageController::class, 'privateIsRevoke']);
+
     });
 
     Route::post('/register', [\App\Http\Controllers\Api\RegisterController::class, 'register'])->name('register');
@@ -35,7 +44,25 @@ Route::middleware('throttle:30,1')->group(function () {     //1小时访问频�
     //提交重置密码
     Route::post('/doChangePassword', [\App\Http\Controllers\Api\PasswordController::class, 'doChangePassword'])->name('doChangePassword');
 
-    Route::prefix('/webSocket')->group(function () {
-        Route::get('/sys', [\App\Http\Controllers\Api\webSocket\SystemMessageController::class, 'systemMessage'])->name('sys');
+    //admin---------------------------------------------------------------------------
+    Route::post('/admin8341login', [\App\Http\Controllers\Admin\AdminLoginController::class, 'login']);
+
+    Route::middleware('auth:admin')->group(function () {
+
+        Route::prefix('/admin')->group(function () {
+            Route::post('logout', [\App\Http\Controllers\Admin\LogoutController::class, 'logout']);
+
+            Route::post('usersAll', [\App\Http\Controllers\Admin\UserDataController::class, 'getAll']);
+            Route::post('edit', [\App\Http\Controllers\Admin\UserDataController::class, 'edit']);
+
+            Route::post('mingPan', [\App\Http\Controllers\Admin\MingPanDataController::class, 'getAll']);
+
+            Route::post('msgAll', [\App\Http\Controllers\Admin\MessageController::class, 'getAll']);
+            Route::post('msgAdd', [\App\Http\Controllers\Admin\MessageController::class, 'add']);
+            Route::post('msgEdit', [\App\Http\Controllers\Admin\MessageController::class, 'edit']);
+            Route::post('msgDel', [\App\Http\Controllers\Admin\MessageController::class, 'del']);
+            Route::post('msgSend', [\App\Http\Controllers\Admin\MessageController::class, 'send']);
+        });
+
     });
 });

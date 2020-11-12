@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as AdminAuth;
 
 /**
@@ -28,11 +28,17 @@ use Illuminate\Foundation\Auth\User as AdminAuth;
  */
 class Admin extends AdminAuth
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     protected $guarded = [];
 
     protected $hidden = [];
 
     public $timestamps = false;
+
+    //passport替代email
+    public function findForPassport($username)
+    {
+        return $this->where('username', $username)->first();
+    }
 }

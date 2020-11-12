@@ -2,25 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->group(function () {
-    Route::get('/login', [\App\Http\Controllers\Admin\AdminLoginController::class, 'login'])
-        ->name('admin.login');
-    Route::get('logout', [\App\Http\Controllers\Admin\AdminHomeController::class, 'logout'])
-        ->name('admin.logout');
+//事件
+//Route::get('/sub', [\App\Http\Controllers\Api\webSocket\SystemMessageController::class, 'systemMessage'])->name('sub');
 
-    Route::middleware('admin')->group(function () {
-        Route::match(['post', 'get'], 'home', [\App\Http\Controllers\Admin\AdminHomeController::class, 'home'])
-            ->name('admin.home');
-        Route::match(['post', 'get'], 'list', [\App\Http\Controllers\Admin\AdminHomeController::class, 'list'])
-            ->name('admin.list');
-    });
-});
-
-Route::get('/sub', [\App\Http\Controllers\Api\webSocket\SystemMessageController::class, 'systemMessage'])->name('sub');
-
+//公共广播
 Route::get('/sysMsg', function () {
-    event(new \App\Events\SystemMessage(['title' => 10, 'msg' => 'Tom']));
+    event(new \App\Events\SystemMessage(['title' => '系统信息', 'msg' => '公共信息', 'color' => 'error--text']));
 })->name('sysMsg');
+
+//私有广播
+Route::get('/regUser', [\App\Http\Controllers\Api\webSocket\RegisterUserEvent::class, 'sendMsg'])->name('regUser');
 
 Route::fallback(function () {
     return abort(403, 'Unauthorized');

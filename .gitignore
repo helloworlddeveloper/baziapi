@@ -5,6 +5,7 @@
 /vendor
 /tests
 /bootstrap
+/home
 .env.example
 .env
 webpack.mix.js

@@ -6,14 +6,15 @@
  */
 function revoked()
 {
-    $tokenModel = \Auth::user()->token();
-    $tokenModel->update([
-        'revoked' => 1,
-    ]);
+    $token = \Auth::user()->token();
+    $tokenRepository = app('Laravel\Passport\TokenRepository');
+    $tokenRepository->revokeAccessToken($token->id);
+
     \DB::table('oauth_refresh_tokens')
-        ->where(['access_token_id' => $tokenModel->id])->update([
-            'revoked' => 1,
-        ]);
+        ->where(['access_token_id' => $token->id])->delete();
+
+    \DB::table('oauth_access_tokens')
+        ->where(['id' => $token->id])->delete();
 }
 
 // sql助手函数打印

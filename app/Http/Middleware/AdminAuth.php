@@ -5,10 +5,11 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class AdminAuth
+class AdminAuth extends Middleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
         $credentials = $request->only('username', 'password');
         if (Auth::guard('admin')->attempt($credentials)) {
@@ -17,6 +18,8 @@ class AdminAuth
         if (Auth::guard('admin')->check()) {
             return $next($request);
         }
-        return abort(403, 'Unauthorized');
+        return response()->json([
+            'message' => 'Unauthorized',
+        ]);
     }
 }
