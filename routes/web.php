@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 //事件
 //Route::get('/sub', [\App\Http\Controllers\Api\webSocket\SystemMessageController::class, 'systemMessage'])->name('sub');
 
+Route::get('/test', [\App\Http\Controllers\TestController::class, 'test']);
+Route::get('/test2', [\App\Http\Controllers\TestController::class, 'test2']);
+
 //公共广播
 Route::get('/sysMsg', function () {
     event(new \App\Events\SystemMessage(['title' => '系统信息', 'msg' => '公共信息', 'color' => 'error--text']));

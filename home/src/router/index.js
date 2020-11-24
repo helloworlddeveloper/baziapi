@@ -52,17 +52,27 @@ const routes = [
           requireAuth: true
         }
       },
+      {
+        path: '/sys',
+        name: 'System',
+        component: () => import('@/components/System'),
+        meta: {
+          title: 'System-Manage',
+          keepAlive: true,
+          requireAuth: true
+        }
+      },
+      {
+        path: '/message',
+        name: 'Message',
+        component: () => import('@/components/userMessage'),
+        meta: {
+          title: 'Message-Manage',
+          keepAlive: true,
+          requireAuth: true
+        }
+      },
     ],
-  },
-  {
-    path: '/test',
-    name: 'Test',
-    component: () => import('@/views/Test'),
-    meta: {
-      title: 'Test',
-      keepAlive: true,
-      requireAuth: false
-    }
   },
   {
     path: '/:pathMatch(.*)*',

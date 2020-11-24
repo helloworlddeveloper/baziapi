@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DateTimeInterface;
 
-class Message extends Model
+class System extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,6 @@ class Message extends Model
 
     protected function serializeDate(DateTimeInterface $date)
     {
-        return $date->format('Y-m-d');
+        return $date->format('Y-m-d H:i');
     }
 }

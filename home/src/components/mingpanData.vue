@@ -8,7 +8,9 @@
       <div style="width: 100%;">
         <h1 class="h3">
           mingPanData
-          <span style="margin-left: 1rem; color: #dedfb2; font-size: 1.2rem">mingPanTotal : {{ mingPanTotal }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">总数 : {{ mingPanTotal }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">男 : {{ manTotal }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">女 : {{ womanTotal }}</span>
           <div class="input-group" style="max-width: 330px; float: right">
             <input v-model="searchInput" type="text" class="form-control" placeholder="input item" aria-label="Recipient's username" aria-describedby="button-addon2">
             <button @click="getData" :disabled="buttonDisabled" class="btn btn-outline-secondary bg-light" type="button" id="button-addon2">Search</button>
@@ -45,7 +47,7 @@
           <th width="5%" class="text-truncate">{{ item.id }}</th>
           <td width="5%" class="text-truncate">{{ item.user_id }}</td>
           <td width="5%" class="text-truncate">{{ item.owner[0].username }}</td>
-          <td width="10%" style="color: pink; font-weight: lighter" class="text-truncate">{{ item.bak1 }}</td>
+          <td width="10%" style="color: pink; font-weight: lighter" class="text-truncate">{{ item.bak_1 }}</td>
           <td width="5%" class="text-truncate">{{ item.sex }}</td>
           <td width="7%" class="text-truncate">{{ item.name }}</td>
           <td width="7%" class="text-truncate">{{ item.call }}</td>
@@ -91,6 +93,9 @@ export default {
   data() {
     return {
       mingPanTotal: '',
+      manTotal: '',
+      womanTotal: '',
+
       searchInput: '',
 
       isButton: true,
@@ -112,6 +117,8 @@ export default {
     } else {
       this.mingPanTableData = JSON.parse(localStorage.getItem('admin_mingPan_table_data'))
       this.mingPanTotal = localStorage.getItem('mingPanTotal')
+      this.manTotal = localStorage.getItem('manTotal')
+      this.womanTotal = localStorage.getItem('womanTotal')
       this.links = JSON.parse(localStorage.getItem('links'))
     }
   },
@@ -169,13 +176,18 @@ export default {
             if (response.status === 200) {
               localStorage.setItem('admin_mingPan_table_data', JSON.stringify(response.data.data.data))
               this.mingPanTableData = JSON.parse(localStorage.getItem('admin_mingPan_table_data'))
+
               localStorage.setItem('mingPanTotal', response.data.total)
+              localStorage.setItem('manTotal', response.data.manTotal)
+              localStorage.setItem('womanTotal', response.data.womanTotal)
               this.mingPanTotal = localStorage.getItem('mingPanTotal')
+              this.manTotal = localStorage.getItem('manTotal')
+              this.womanTotal = localStorage.getItem('womanTotal')
 
               localStorage.setItem('links', JSON.stringify(response.data.data.links))
               this.links = JSON.parse(localStorage.getItem('links'))
             }
-            this.$message('success', response.data.message)
+            // this.$message('success', response.data.message)
           })
           .catch(error => {
             this.isProgress = false

@@ -28,9 +28,9 @@ class CreateMingPanTable extends Migration
             $table->string('area')->nullable()->comment('常住区域');
             $table->string('type')->nullable()->comment('命盘特征');
             $table->string('desc')->nullable()->comment('描述');
-            $table->string('bak1')->nullable()->comment('备用字段1');
-            $table->string('bak2')->nullable()->comment('备用字段2');
-            $table->string('bak3')->nullable()->comment('备用字段3');
+            $table->string('bak_1')->nullable()->comment('备用字段1');
+            $table->string('bak_2')->nullable()->comment('备用字段2');
+            $table->string('bak_3')->nullable()->comment('备用字段3');
             $table->timestamps();
         });
     }

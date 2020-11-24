@@ -14,12 +14,11 @@ class AddOneAdminsTable extends Migration
     public function up()
     {
         Schema::table('admins', function (Blueprint $table) {
-            $table->string('password_resets')->nullable();
-            $table->string('bak1')->nullable();
-            $table->string('bak2')->nullable();
-            $table->string('bak3')->nullable();
-            $table->string('bak4')->nullable();
-            $table->string('bak5')->nullable();
+            $table->string('bak_1')->nullable();
+            $table->string('bak_2')->nullable();
+            $table->string('bak_3')->nullable();
+            $table->text('bak_4')->nullable();
+            $table->text('bak_5')->nullable();
         });
     }
 
@@ -30,15 +29,6 @@ class AddOneAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn([
-                'password_resets',
-                'bak1',
-                'bak2',
-                'bak3',
-                'bak4',
-                'bak5',
-            ]);
-        });
+        Schema::dropIfExists('admins');
     }
 }

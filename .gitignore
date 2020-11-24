@@ -6,6 +6,7 @@
 /tests
 /bootstrap
 /home
+/echo.json
 .env.example
 .env
 webpack.mix.js

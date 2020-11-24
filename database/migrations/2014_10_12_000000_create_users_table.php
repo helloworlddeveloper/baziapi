@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('head_logo')->nullable()->comment('用户logo');
             $table->string('avatar')->nullable()->comment('用户头像');
             $table->string('user_ip')->nullable()->comment('用户IP地址');
-            $table->integer('user_type')->default(0)->comment('用户类型，默认0为订阅普通用户');
-            $table->string('activity_token')->comment('激活验证token');
+            $table->integer('user_type')->default(0)->comment('用户类型，默认0为普通用户,1为订阅用户');
+            $table->string('activity_token')->nullable()->comment('激活验证token');
             $table->dateTime('activity_expire', 0)->nullable()->comment('激活过期时间');
             $table->integer('is_activity')->default(0)->comment('是否激活1是，0否');
             $table->string('storage_1')->nullable()->comment('备用字段1');

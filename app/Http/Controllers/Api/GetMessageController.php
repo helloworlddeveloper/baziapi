@@ -9,18 +9,19 @@ use Illuminate\Http\Request;
 
 class GetMessageController extends Controller
 {
-    public $publicRes;
+    public $publicRes = [];
+    public $privateRes;
 
     public function getMessage(Request $request)
     {
-        $privateRes = Message::query()
+        $this->privateRes = Message::query()
             ->where([
                 ['uid', \Auth::id()],
                 ['message_type', '私有信息'],
                 ['bak_2', 1],
                 ['isrevoke', 0],
             ])
-            ->select('id', 'uid', 'usertype', 'title', 'message', 'message_type', 'isread', 'isrevoke')
+            ->select('id', 'uid', 'usertype', 'title', 'message', 'message_type', 'isread', 'isrevoke', 'sendtime')
             ->get();
 
         //取出每个用户对应的公共信息ID
@@ -33,7 +34,7 @@ class GetMessageController extends Controller
 
         //检索出对应的公共信息
         $publicMessage = Message::query()
-            ->select('title', 'message', 'id', 'message_type')
+            ->select('title', 'message', 'id', 'message_type', 'sendtime')
             ->whereIn('id', $statusId)
             ->get();
 
@@ -50,6 +51,7 @@ class GetMessageController extends Controller
             $this->publicRes[$key]['title'] = $publicMessage[$key]['title'];
             $this->publicRes[$key]['message'] = $publicMessage[$key]['message'];
             $this->publicRes[$key]['id'] = $publicMessage[$key]['id'];
+            $this->publicRes[$key]['sendtime'] = $publicMessage[$key]['sendtime'];
             $this->publicRes[$key]['not_uid'] = $value['not_uid'];
             $this->publicRes[$key]['not_id'] = $value['not_id'];
             $this->publicRes[$key]['not_isread'] = $value['not_isread'];
@@ -76,8 +78,8 @@ class GetMessageController extends Controller
 
         return response()->json([
             'data' => [
-                'publicMessage' => $this->publicRes,
-                'privateMessage' => $privateRes,
+                'publicMessage' => json_decode(json_encode($this->publicRes), true),
+                'privateMessage' => $this->privateRes,
                 'publicTotal' => $publicTotal + $privateTotal,
             ],
         ], 200);

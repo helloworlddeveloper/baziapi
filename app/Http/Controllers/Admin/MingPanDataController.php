@@ -21,6 +21,12 @@ class MingPanDataController extends Controller
 
         //得到用户总数
         $total = MingPan::query()->count();
+        $manTotal = MingPan::query()
+            ->where('sex', '男')
+            ->count();
+        $womanTotal = MingPan::query()
+            ->where('sex', '女')
+            ->count();
 
         if (!$request->input) {
             $users = MingPan::query()
@@ -38,6 +44,8 @@ class MingPanDataController extends Controller
             'message' => 'Success Get',
             'data' => $users,
             'total' => $total,
+            'manTotal' => $manTotal,
+            'womanTotal' => $womanTotal,
         ], 200);
     }
 
@@ -49,7 +57,7 @@ class MingPanDataController extends Controller
             ->where('user_id', \Auth::id())
             ->where(function ($query) {
                 $query
-                    ->orwhere('bak1', 'like', '%' . $this->params . '%')
+                    ->orwhere('bak_1', 'like', '%' . $this->params . '%')
                     ->orwhere('name', 'like', '%' . $this->params . '%')
                     ->orwhere('sex', 'like', '%' . $this->params . '%')
                     ->orwhere('call', 'like', '%' . $this->params . '%')

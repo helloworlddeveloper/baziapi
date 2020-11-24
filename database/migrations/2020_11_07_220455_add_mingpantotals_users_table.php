@@ -10,11 +10,11 @@ class AddMingpantotalsUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('mingpantotal')->nullable();
-            $table->string('bak1')->nullable();
-            $table->string('bak2')->nullable();
-            $table->string('bak3')->nullable();
-            $table->string('bak4')->nullable();
-            $table->string('bak5')->nullable();
+            $table->string('bak_1')->nullable();
+            $table->string('bak_2')->nullable();
+            $table->string('bak_3')->nullable();
+            $table->string('bak_4')->nullable();
+            $table->string('bak_5')->default(0)->comment('记录底部版权隐藏状态，0默认隐藏，1显示');
         });
     }
 
@@ -25,15 +25,6 @@ class AddMingpantotalsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn([
-                'mingpantotal',
-                'bak1',
-                'bak2',
-                'bak3',
-                'bak4',
-                'bak5',
-            ]);
-        });
+        Schema::dropIfExists('users');
     }
 }

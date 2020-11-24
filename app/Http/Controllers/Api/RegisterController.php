@@ -117,6 +117,7 @@ class RegisterController extends Controller
                 'avatarPath' => $user->avatar,
                 'user_type' => $user->user_type,
                 'APP_URL' => env('APP_URL'),
+                'user_type2' => (int)$user->bak_5, //底部版权状态
             ],
             'data' => json_decode((string)$this->getToken(), true),
         ], 200);

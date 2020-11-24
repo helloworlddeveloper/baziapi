@@ -21,12 +21,21 @@ class MessageController extends GetMessageController
     public function getAll()
     {
         $total = Message::query()->count();
+        $pubTotal = Message::query()
+            ->where('message_type', '公共信息')
+            ->count();
+        $priTotal = Message::query()
+            ->where('message_type', '私有信息')
+            ->count();
+
         $msg = Message::query()->latest()->get();
 
         return response()->json([
             'message' => '查询成功',
             'data' => $msg,
             'total' => $total,
+            'pubTotal' => $pubTotal,
+            'priTotal' => $priTotal,
         ]);
     }
 
@@ -100,6 +109,10 @@ class MessageController extends GetMessageController
         }
 
         if ($request->message_type == '私有信息') {
+            $updateSta = Message::query()->find($request->id);
+            $updateSta->sendtime = date('Y-m-d H:i:s', time());
+            $updateSta->save();
+
             $updateSta = Message::query()->find($request->id);
             $updateSta->bak_2 = 1; //已推送的
             $updateSta->save();

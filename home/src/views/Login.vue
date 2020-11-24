@@ -47,6 +47,7 @@ export default {
               this.$message('success', response.data.message)
               localStorage.setItem('admin_access_token', response.data.data.access_token)
               localStorage.setItem('admin_username', response.data.user.username)
+              this.$store.commit('usernameMutations', response.data.user.username)
               this.$router.push('/home')
             }
             this.isButton = true

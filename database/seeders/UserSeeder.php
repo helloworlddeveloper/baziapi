@@ -6,16 +6,23 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    public $users = [
+        'aa',
+        'bb',
+        'cc',
+        'dd',
+        'ee',
+    ];
+
     public function run()
     {
-//        \DB::table('users')->insert([
-//            'username' => 'admin',
-//            'password' => \Hash::make('abcd@1234')
-//        ]);
+        foreach ($this->users as $user) {
+            \DB::table('users')->insert([
+                'username' => $user,
+                'email' => $user . '@' . $user . '.com',
+                'is_activity' => 1,
+                'password' => \Hash::make('aaaaaa'),
+            ]);
+        }
     }
 }

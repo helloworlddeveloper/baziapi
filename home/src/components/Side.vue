@@ -28,6 +28,8 @@ export default {
         {text: 'users', to: 'userData', active: '', key: 0},
         {text: 'mingpans', to: 'mingpanData', active: '', key: 1},
         {text: 'pushInfo', to: 'pushInfo', active: '', key: 2},
+        {text: 'system', to: 'System', active: '', key: 3},
+        {text: 'message', to: 'Message', active: '', key: 4},
       ]
     }
   },

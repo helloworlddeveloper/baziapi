@@ -15,9 +15,26 @@ class UserDataController extends Controller
     {
         $users = User::query()->latest()->paginate(30);
 
+        //注册
+        $total = User::query()->count();
+
+        //激活
+        $activeTotal = User::query()
+            ->where('is_activity', 1)->count();
+        //受限
+        $xTotal = User::query()
+            ->where('user_type', 9)->count();
+        //会员
+        $membersTotal = User::query()
+            ->where('user_type', 1)->count();
+
         return response()->json([
             'message' => 'Success Get',
             'data' => $users,
+            'total' => $total,
+            'activeTotal' => $activeTotal,
+            'xTotal' => $xTotal,
+            'membersTotal' => $membersTotal,
         ], 200);
     }
 

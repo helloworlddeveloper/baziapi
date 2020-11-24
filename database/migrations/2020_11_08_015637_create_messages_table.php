@@ -14,7 +14,7 @@ class CreateMessagesTable extends Migration
             $table->string('usertype')->nullable()->comment('用户类型');
 
             $table->string('title')->nullable()->comment('信息标题');
-            $table->string('message')->nullable()->comment('信息内容');
+            $table->text('message')->nullable()->comment('信息内容');
 
             $table->string('message_type')->nullable()->comment('信息类型');
             $table->string('isread')->nullable()->comment('阅读状态');

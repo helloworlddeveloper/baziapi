@@ -17,6 +17,7 @@ Route::middleware('throttle:30,1')->group(function () {     //1小时访问频�
         Route::post('/TopLogo', [\App\Http\Controllers\Api\UserAvatarController::class, 'TopLogo'])->name('topLogo');
 
         Route::post('/title', [\App\Http\Controllers\Api\TitleController::class, 'store'])->name('title');
+        Route::post('/hideFoot', [\App\Http\Controllers\Api\HideFootController::class, 'hideFoot']);
 
         Route::prefix('/mingpan')->group(function () {
             Route::post('/store', [\App\Http\Controllers\Api\MingPanController::class, 'store'])->name('store');
@@ -33,6 +34,12 @@ Route::middleware('throttle:30,1')->group(function () {     //1小时访问频�
         Route::post('pisread', [\App\Http\Controllers\Api\GetMessageController::class, 'privateIsRead']);
         Route::post('pisrevoke', [\App\Http\Controllers\Api\GetMessageController::class, 'privateIsRevoke']);
 
+        //用户留言部分
+        Route::post('userMessageSend', [\App\Http\Controllers\Message\UserMessageController::class, 'store']);
+        Route::post('userMessageGet', [\App\Http\Controllers\Message\UserMessageController::class, 'get']);
+        Route::post('userMessageDel', [\App\Http\Controllers\Message\UserMessageController::class, 'delMessage']);
+        Route::post('noReadReplyCount', [\App\Http\Controllers\Message\UserMessageController::class, 'noReadReply']);
+
     });
 
     Route::post('/register', [\App\Http\Controllers\Api\RegisterController::class, 'register'])->name('register');
@@ -46,6 +53,10 @@ Route::middleware('throttle:30,1')->group(function () {     //1小时访问频�
 
     //admin---------------------------------------------------------------------------
     Route::post('/admin8341login', [\App\Http\Controllers\Admin\AdminLoginController::class, 'login']);
+
+    //system---------------------------------------------------------------------------
+    Route::post('/getStatic', [\App\Http\Controllers\Admin\SystemController::class, 'getStatic']);
+
 
     Route::middleware('auth:admin')->group(function () {
 
@@ -62,6 +73,19 @@ Route::middleware('throttle:30,1')->group(function () {     //1小时访问频�
             Route::post('msgEdit', [\App\Http\Controllers\Admin\MessageController::class, 'edit']);
             Route::post('msgDel', [\App\Http\Controllers\Admin\MessageController::class, 'del']);
             Route::post('msgSend', [\App\Http\Controllers\Admin\MessageController::class, 'send']);
+
+            Route::post('/saveHome', [\App\Http\Controllers\Admin\SystemController::class, 'saveHome']);
+            Route::post('/saveSub', [\App\Http\Controllers\Admin\SystemController::class, 'saveSub']);
+
+            //admin回复留言
+            Route::post('/getAllCount', [\App\Http\Controllers\Message\ReplyUserMessageController::class, 'getAllCount']);
+            Route::post('/getMessageAll', [\App\Http\Controllers\Message\ReplyUserMessageController::class, 'getAll']);
+            Route::post('/getMessageAllNew', [\App\Http\Controllers\Message\ReplyUserMessageController::class, 'getAllNew']);
+            Route::post('/saveReply', [\App\Http\Controllers\Message\ReplyUserMessageController::class, 'saveReply']);
+            Route::post('/delMessage', [\App\Http\Controllers\Message\ReplyUserMessageController::class, 'delMessage']);
+            Route::post('/readMessage', [\App\Http\Controllers\Message\ReplyUserMessageController::class, 'readMessage']);
+            Route::post('/editReplyMessage', [\App\Http\Controllers\Message\ReplyUserMessageController::class, 'editReplyMessage']);
+            Route::post('/delReplyMessage', [\App\Http\Controllers\Message\ReplyUserMessageController::class, 'delReplyMessage']);
         });
 
     });

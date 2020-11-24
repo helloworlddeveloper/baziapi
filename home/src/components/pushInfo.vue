@@ -7,7 +7,9 @@
       <div style="width: 100%;">
         <h1 class="h3">
           pushInfo
-          <span style="margin-left: 1rem; color: #dedfb2; font-size: 1.2rem">MessageTotal : {{ messageTotal }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">总数 : {{ messageTotal }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">公共 : {{ pubTotal }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">私有 : {{ priTotal }}</span>
           <div class="input-group" style="max-width: 330px; float: right">
             <input v-model="searchInput" type="text" class="form-control" placeholder="input item" aria-label="Recipient's username" aria-describedby="button-addon2">
             <button @click="getData(data='')" :disabled="buttonDisabled" class="btn btn-outline-secondary bg-light" type="button" id="button-addon2">
@@ -200,6 +202,9 @@ export default {
       token: '',
 
       messageTotal: '',
+      pubTotal: '',
+      priTotal: '',
+
       messageData: [],
       searchInput: '',
 
@@ -246,11 +251,14 @@ export default {
     } else {
       this.messageData = JSON.parse(localStorage.getItem('messageData'))
       this.messageTotal = localStorage.getItem('messageTotal')
+      this.pubTotal = localStorage.getItem('pubTotal')
+      this.priTotal = localStorage.getItem('priTotal')
     }
   },
   methods: {
     getData(data = '', url = 'msgAll') {
       this.isProgress = true
+      this.isButton = false
       this.buttonDisabled = true
       post('admin/' + url,
           data,
@@ -268,18 +276,25 @@ export default {
               if (data === '') {
                 localStorage.setItem('messageData', JSON.stringify(response.data.data))
                 this.messageData = JSON.parse(localStorage.getItem('messageData'))
+
                 localStorage.setItem('messageTotal', response.data.total)
+                localStorage.setItem('pubTotal', response.data.pubTotal)
+                localStorage.setItem('priTotal', response.data.priTotal)
                 this.messageTotal = localStorage.getItem('messageTotal')
+                this.pubTotal = localStorage.getItem('pubTotal')
+                this.priTotal = localStorage.getItem('priTotal')
               } else {
                 this.modal.hide()
                 this.getData()
               }
             }
-            this.$message('success', response.data.message)
+            // this.$message('success', response.data.message)
+            this.isButton = true
           })
           .catch(error => {
             this.isProgress = false
             this.buttonDisabled = false
+            this.isButton = true
             this.$message('error', error)
           })
     },

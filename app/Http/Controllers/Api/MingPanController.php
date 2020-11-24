@@ -19,7 +19,7 @@ class MingPanController extends Controller
     {
         $total = MingPan::query()->where('user_id', \Auth::id())->count();
         $user = User::find(\Auth::id());
-        $user->mingpantotal = $total;
+        $user->mingpantotal = $total + 1;
         $user->save();
 
         $data = $this->create($request->all());
@@ -77,7 +77,7 @@ class MingPanController extends Controller
             ->where('user_id', \Auth::id())
             ->where(function ($query) {
                 $query
-                    ->orwhere('bak1', 'like', '%' . $this->params . '%')
+                    ->orwhere('bak_1', 'like', '%' . $this->params . '%')
                     ->orwhere('name', 'like', '%' . $this->params . '%')
                     ->orwhere('call', 'like', '%' . $this->params . '%')
                     ->orwhere('born', 'like', '%' . $this->params . '%')
@@ -137,7 +137,7 @@ class MingPanController extends Controller
             'area' => $data['area'],
             'type' => json_encode($data['type'], JSON_UNESCAPED_UNICODE),
             'desc' => $data['desc'],
-            'bak1' => $data['baZiTime'],
+            'bak_1' => $data['baZiTime'],
         ]);
     }
 
@@ -158,7 +158,7 @@ class MingPanController extends Controller
         $user->area = $data['area'];
         $user->type = json_encode($data['type'], JSON_UNESCAPED_UNICODE);
         $user->desc = $data['desc'];
-        $user->bak1 = $data['baZiTime'];
+        $user->bak_1 = $data['baZiTime'];
         $user->save();
 
         return $user;

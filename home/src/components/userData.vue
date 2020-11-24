@@ -8,7 +8,10 @@
       <div style="width: 100%;">
         <h1 class="h3">
           userData
-          <span style="margin-left: 1rem; color: #dedfb2; font-size: 1.2rem">total : {{ total }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">总数 : {{ total }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">激活 : {{ activeTotal }}</span>
+          <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">受限 : {{ xTotal }}</span>
+          <span style="margin-left: 1rem; color: white; font-size: .9rem">会员 : {{ membersTotal }}</span>
           <div class="input-group" style="max-width: 330px; float:right;">
             <input v-model="searchInput" type="text" class="form-control" placeholder="input something" aria-label="Recipient's username" aria-describedby="button-addon2">
             <button @click="getData" :disabled="buttonDisabled" class="btn btn-outline-secondary bg-light" type="button" id="button-addon2">Search</button>
@@ -156,6 +159,7 @@
               Loading...
             </button>
           </div>
+
         </div>
       </div>
     </div>
@@ -172,6 +176,9 @@ export default {
   data() {
     return {
       total: '',
+      activeTotal: '',
+      xTotal: '',
+      membersTotal: '',
       searchInput: '',
 
       editModal: '',
@@ -201,6 +208,9 @@ export default {
     } else {
       this.tableData = JSON.parse(localStorage.getItem('admin_table_data'))
       this.total = localStorage.getItem('total')
+      this.activeTotal = localStorage.getItem('activeTotal')
+      this.xTotal = localStorage.getItem('xTotal')
+      this.membersTotal = localStorage.getItem('membersTotal')
       this.links = JSON.parse(localStorage.getItem('userLinks'))
     }
   },
@@ -258,13 +268,21 @@ export default {
             if (response.status === 200) {
               localStorage.setItem('admin_table_data', JSON.stringify(response.data.data.data))
               this.tableData = JSON.parse(localStorage.getItem('admin_table_data'))
+
               localStorage.setItem('total', response.data.total)
+              localStorage.setItem('activeTotal', response.data.activeTotal)
+              localStorage.setItem('xTotal', response.data.xTotal)
+              localStorage.setItem('membersTotal', response.data.membersTotal)
+
               this.total = localStorage.getItem('total')
+              this.activeTotal = localStorage.getItem('activeTotal')
+              this.xTotal = localStorage.getItem('xTotal')
+              this.membersTotal = localStorage.getItem('membersTotal')
 
               localStorage.setItem('userLinks', JSON.stringify(response.data.data.links))
               this.links = JSON.parse(localStorage.getItem('userLinks'))
             }
-            this.$message('success', response.data.message)
+            // this.$message('success', response.data.message)
           })
           .catch(error => {
             this.isProgress = false
@@ -294,7 +312,7 @@ export default {
           .then(response => {
             if (response.status === 200) {
               this.getData()
-              this.$message('success', response.data.message)
+              // this.$message('success', response.data.message)
               this.editModal.hide()
             }
             this.isButton = true

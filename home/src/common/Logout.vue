@@ -25,6 +25,7 @@ export default {
             if (response.status === 200) {
               this.$message('success', response.data.message)
               localStorage.setItem('admin_access_token', '')
+              localStorage.setItem('admin_username', '')
               this.$router.push('/')
             }
           })
