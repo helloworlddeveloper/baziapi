@@ -23,6 +23,7 @@ php artisan ide-helper:meta
 php artisan make:migration create_add_users_isfoot_table
 
 php artisan storage:link
+
 php artisan db:seed --class=AdminSeeder
 php artisan passport:install
 php artisan passport:install --force

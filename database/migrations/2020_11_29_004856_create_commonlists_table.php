@@ -35,6 +35,6 @@ class CreateCommonlistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commonlist');
+        Schema::dropIfExists('commonlists');
     }
 }
