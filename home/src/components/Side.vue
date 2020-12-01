@@ -25,11 +25,11 @@ export default {
     return {
       currentKey: '',
       list: [
-        {text: 'users', to: 'userData', active: '', key: 0},
-        {text: 'mingpans', to: 'mingpanData', active: '', key: 1},
-        {text: 'pushInfo', to: 'pushInfo', active: '', key: 2},
-        {text: 'system', to: 'System', active: '', key: 3},
-        {text: 'message', to: 'Message', active: '', key: 4},
+        {text: '用户数据', to: 'userData', active: '', key: 0},
+        {text: '命盘数据', to: 'mingpanData', active: '', key: 1},
+        {text: '推送消息', to: 'pushInfo', active: '', key: 2},
+        {text: '静态数据', to: 'System', active: '', key: 3},
+        {text: '站内留言', to: 'Message', active: '', key: 4},
       ]
     }
   },

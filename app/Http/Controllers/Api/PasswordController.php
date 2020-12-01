@@ -99,7 +99,7 @@ class PasswordController extends Controller
         //撤销授权，重新登陆
         revoked();
         return response()->json([
-            'message' => '密码重置成功，请重新登陆。',
+            'message' => '密码修改成功，请重新登陆。',
         ], 200);
     }
 }

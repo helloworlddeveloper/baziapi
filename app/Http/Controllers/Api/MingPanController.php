@@ -18,7 +18,15 @@ class MingPanController extends Controller
     public function store(MingPanRequest $request)
     {
         $total = MingPan::query()->where('user_id', \Auth::id())->count();
+
         $user = User::find(\Auth::id());
+
+        if ($total > 0 && $user->user_type == 0) {
+            return response()->json([
+                'message' => '非订阅用户只能保存一条数据。',
+            ], 403);
+        }
+
         $user->mingpantotal = $total + 1;
         $user->save();
 

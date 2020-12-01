@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\CheckMail;
+use App\Http\Middleware\CheckMemberTime;
 use App\Http\Middleware\RevalidateBackHistory;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -57,6 +58,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'CheckMail' => CheckMail::class,
+        'CheckMemberTime' => CheckMemberTime::class,
         'revalidate' => RevalidateBackHistory::class,
         'admin' => AdminAuth::class,
         'auth' => \App\Http\Middleware\Authenticate::class,

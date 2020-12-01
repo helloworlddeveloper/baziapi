@@ -1,20 +1,18 @@
 <template>
   <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 col-xxl-11">
-    <div class="
-    d-flex justify-content-between
-     flex-wrap flex-md-nowrap align-items-center
-      pt-4 pb-2 mb-3 border-bottom bg-secondary"
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-2 mb-3 border-bottom bg-secondary"
          style="position:sticky; right: 0; top:64px; z-index: 200">
       <div style="width: 100%;">
         <h1 class="h3">
-          userData
+          用户数据
           <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">总数 : {{ total }}</span>
           <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">激活 : {{ activeTotal }}</span>
           <span style="margin-left: 1rem; color: #dedfb2; font-size: .9rem">受限 : {{ xTotal }}</span>
-          <span style="margin-left: 1rem; color: white; font-size: .9rem">会员 : {{ membersTotal }}</span>
+          <span style="margin-left: 1rem; color: white; font-size: .9rem">普通会员 : {{ membersTotal }}</span>
+          <span style="margin-left: 1rem; color: white; font-size: .9rem">永久会员 : {{ forever }}</span>
           <div class="input-group" style="max-width: 330px; float:right;">
-            <input v-model="searchInput" type="text" class="form-control" placeholder="input something" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button @click="getData" :disabled="buttonDisabled" class="btn btn-outline-secondary bg-light" type="button" id="button-addon2">Search</button>
+            <input v-model="searchInput" type="text" class="form-control" placeholder="输入查询条件" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button @click="getData" :disabled="buttonDisabled" class="btn btn-outline-secondary bg-light" type="button" id="button-addon2">查询</button>
           </div>
         </h1>
       </div>
@@ -27,22 +25,21 @@
         <thead style="position: sticky;top: 0;background-color:#0e6e82;">
         <tr>
           <th width="5%">ID</th>
-          <th width="8%">Username</th>
+          <th width="8%">用户名</th>
           <th width="8%">Email</th>
           <th width="10%">IP</th>
-          <th width="5%">Type</th>
-          <th width="5%">Activity</th>
+          <th width="5%">类型</th>
+          <th width="5%">激活</th>
           <th width="10%">Title</th>
           <th width="5%">Total</th>
-          <th width="8%">Ctime</th>
-          <th width="8%">Utime</th>
-          <th width="8%">Control</th>
+          <th width="8%">创建时间</th>
+          <th width="8%">到期时间</th>
+          <th width="8%">操作</th>
         </tr>
         </thead>
         <tbody>
         <tr style="height: 3rem;line-height: 3rem"
-            v-for="(item,index) in this.tableData" :key="index"
-        >
+            v-for="(item,index) in this.tableData" :key="index">
           <th width="5%" class="text-truncate">{{ item.id }}</th>
           <td width="8%" class="text-truncate">{{ item.username }}</td>
           <td width="8%" class="text-truncate">{{ item.email }}</td>
@@ -52,7 +49,7 @@
           <td width="10%" class="text-truncate">{{ item.storage_3 }}</td>
           <td width="5%" class="text-truncate" style="color: pink; font-weight: lighter">{{ item.mingpantotal }}</td>
           <td width="8%" class="text-truncate">{{ item.created_at }}</td>
-          <td width="8%" class="text-truncate">{{ item.updated_at }}</td>
+          <td width="8%" class="text-truncate">{{ item.membertime }}</td>
           <td width="8%" class="text-truncate">
             <span class="control" @click="edit(item)">
               <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -62,21 +59,20 @@
                       d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
               </svg>
             </span>
-            <span class="control" aria-disabled="true">
-              <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-x-square del" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                      d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                <path fill-rule="evenodd"
-                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </span>
-
             <span class="control" @click="pushMessage(item)" style="color: pink">
-            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-chat-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-chat-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                     d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
               <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
             </svg>
+            </span>
+            <!--手动开通会员-->
+            <span class="control" @click="setMember(item)" style="color: yellowgreen">
+              <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-badge" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 0 1 4.5 0h7A2.5 2.5 0 0 1 14 2.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2.5zM4.5 1A1.5 1.5 0 0 0 3 2.5v10.795a4.2 4.2 0 0 1 .776-.492C4.608 12.387 5.937 12 8 12s3.392.387 4.224.803a4.2 4.2 0 0 1 .776.492V2.5A1.5 1.5 0 0 0 11.5 1h-7z"/>
+                <path fill-rule="evenodd" d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/>
+              </svg>
             </span>
           </td>
         </tr>
@@ -102,6 +98,7 @@
         </li>
       </ul>
     </nav>
+
     <!-- Modal -->
     <div class="modal fade" id="editDialog" tabindex="-1" aria-hidden="true" style="top: 20%">
       <div class="modal-dialog">
@@ -110,6 +107,7 @@
             <h5 class="modal-title">Edit UserData</h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
+
           <div class="modal-body text-dark" style="padding: 1rem 3rem 1rem 3rem">
 
             <div class="row">
@@ -133,6 +131,7 @@
                   <option selected v-text="editModalData.user_type"></option>
                   <option>0</option>
                   <option>1</option>
+                  <option>8</option>
                   <option>9</option>
                 </select>
               </div>
@@ -180,6 +179,7 @@ export default {
       xTotal: '',
       membersTotal: '',
       searchInput: '',
+      forever: '',
 
       editModal: '',
       editModalData: {
@@ -211,6 +211,7 @@ export default {
       this.activeTotal = localStorage.getItem('activeTotal')
       this.xTotal = localStorage.getItem('xTotal')
       this.membersTotal = localStorage.getItem('membersTotal')
+      this.forever = localStorage.getItem('forever')
       this.links = JSON.parse(localStorage.getItem('userLinks'))
     }
   },
@@ -254,7 +255,7 @@ export default {
       this.isProgress = true
       this.buttonDisabled = true
       post('admin/usersAll',
-          {page: page, input: this.searchInput},
+          {page: page, searchInput: this.searchInput},
           {
             headers: {
               'Authorization': 'Bearer ' + this.token,
@@ -273,11 +274,13 @@ export default {
               localStorage.setItem('activeTotal', response.data.activeTotal)
               localStorage.setItem('xTotal', response.data.xTotal)
               localStorage.setItem('membersTotal', response.data.membersTotal)
+              localStorage.setItem('forever', response.data.forever)
 
               this.total = localStorage.getItem('total')
               this.activeTotal = localStorage.getItem('activeTotal')
               this.xTotal = localStorage.getItem('xTotal')
               this.membersTotal = localStorage.getItem('membersTotal')
+              this.forever = localStorage.getItem('forever')
 
               localStorage.setItem('userLinks', JSON.stringify(response.data.data.links))
               this.links = JSON.parse(localStorage.getItem('userLinks'))
@@ -330,6 +333,20 @@ export default {
       })
       this.$router.push({name: 'pushInfo'})
     },
+    setMember(v) {
+      this.isProgress = true
+      post('admin/setMember', {id: v.id}, {headers: {'Authorization': 'Bearer ' + this.token, 'Content-Type': 'application/json', 'Accept': 'application/json'}})
+          .then(response => {
+            if (response.status === 200) {
+              this.isProgress = false
+              this.$message('success', response.data.message)
+            }
+          })
+          .catch(error => {
+            this.isProgress = false
+            this.$message('error', error)
+          })
+    }
   },
   mounted() {
     this.$nextTick(function () {
@@ -347,7 +364,7 @@ export default {
 .control {
   cursor: pointer;
   color: orange;
-  margin-left: 1rem;
+  margin-right: 1.5rem;
 }
 
 .del {

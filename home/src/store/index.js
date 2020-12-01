@@ -26,6 +26,10 @@ export default createStore({
 
     //tab
     currentTab: 'defaultMessage',
+
+    //后台获取静态数据
+    systemData: [],
+    payDesc: [],
   },
 
   mutations: {
@@ -70,6 +74,14 @@ export default createStore({
     currentTabMutations(s, v) {
       s.currentTab = v
     },
+
+    systemDataMutations(s, v) {
+      s.systemData = v
+    },
+
+    payDescMutations(s, v) {
+      s.payDesc = v
+    },
   },
 
   actions: {
@@ -80,6 +92,43 @@ export default createStore({
           if (response.status === 200) {
             commit('homeDescMutations', response.data.data)
           }
+        })
+    },
+
+    //后台获取静态数据
+    systemDataActions({commit}, v) {
+      post(v.methods, v.value, {
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('admin_access_token'),
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+        .then(response => {
+          commit('isProgressMutations', false)
+          if (response.status === 200) {
+            if (v.methods === 'getAll') {
+              commit('systemDataMutations', response.data.data)
+            }
+            if (v.methods === 'getPayDesc') {
+              commit('payDescMutations', response.data.data)
+            }
+            if (v.methods === 'admin/savePayDesc' || v.methods === 'admin/delPayDesc') {
+              commit('alertMuta', {isShow: true, color: 'alert-success', icon: 'mdi-check-circle', message: response.data.message,})
+              setTimeout(() => {
+                commit('alertMuta', {isShow: false,})
+              }, 3000)
+            }
+          }
+        })
+        .catch(error => {
+          commit('alertMuta', {isShow: true, color: 'alert-danger', icon: 'mdi-alert-decagram-outline', message: error,})
+          commit('isProgressMutations', false)
+          setTimeout(() => {
+            commit('alertMuta', {
+              isShow: false,
+            })
+          }, 3000)
         })
     },
 
@@ -95,7 +144,6 @@ export default createStore({
       })
         .then(response => {
           if (response.status === 200) {
-            console.log(response.data);
             commit('isProgressMutations', false)
 
             //按用户ID排序
@@ -138,6 +186,8 @@ export default createStore({
         replyUserMessage: val.replyUserMessage,
         currentTab: val.currentTab,
         allMessage: val.allMessage,
+        systemData: val.systemData,
+        payDesc: val.payDesc,
       }
     }
   })],

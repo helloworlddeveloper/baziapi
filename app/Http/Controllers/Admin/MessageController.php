@@ -61,6 +61,7 @@ class MessageController extends GetMessageController
 
         return response()->json([
             'message' => '添加成功',
+            'data' => $insert
         ]);
     }
 

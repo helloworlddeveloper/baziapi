@@ -11,24 +11,18 @@ class HideFootController extends Controller
     public function hideFoot(Request $request)
     {
         $user = User::find(\Auth::id());
-        if ($user->user_type != 1) {
-            return response()->json([
-                'message' => '您还没有订阅，订阅用户特权。',
-            ], 403);
-        }
-
         //记录底部版权隐藏状态
-        if ($request->hideFoot == 1) {
-            $user->bak_5 = 1;
-            $user->save();
-        }
-        if ($request->hideFoot == 0) {
+        if ($request->hideFoot === false) {
             $user->bak_5 = 0;
+            $user->save();
+        } else {
+            $user->bak_5 = 1;
             $user->save();
         }
 
         return response()->json([
-            'hideFoot' => (int)$user->bak_5
+            'hideFoot' => (int)$user->bak_5,
+            'aaa' => $request->all()
         ]);
     }
 }

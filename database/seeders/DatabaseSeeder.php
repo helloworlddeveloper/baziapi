@@ -2,16 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\CommonlistModel;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
 //        User::factory()->times(300)->create();
@@ -19,6 +15,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             UserSeeder::class,
             SystemSeeder::class,
+            CommonlistSeeder::class,
         ]);
     }
 }

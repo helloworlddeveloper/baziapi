@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\RegisterUserEvent;
 use App\Http\Controllers\Controller;
 use App\Mail\UserMail;
+use App\Models\System;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
@@ -101,13 +103,38 @@ class RegisterController extends Controller
                 'message' => '账号或密码错误',
             ], 403);
         }
-
         //记录IP和登陆时间
         $user->user_ip = $request->user_ip;
         $user->save();
+        //首次登陆
+        if (!$user->bak_4) {
+            $user->update(['bak_4' => 1]);
+            $content = System::query()->where('routers', 'registerNot')->first();
+            $firstLogin = $content->desc;
+        } else {
+            $firstLogin = 0;
+        }
+        //判断订阅是否到期
+        $currentTime = time();
+//        $currentTime = strtotime(date("Y-m-d", strtotime("+ 3 year")));
+        if ($user->membertime) {
+            $membertime = strtotime($user->membertime);
+            if ($membertime && $membertime < $currentTime) { //如果订阅时间小于当前时间，订阅到期
+                $user->user_type = 0;
+                $user->membertime = null;
+                $user->save();
+                $msg = [
+                    'type' => 'membertime',
+                    'ini' => 0,
+                    'msg' => '对不起，您的订阅时间已到期，您账号已成为普通级别。',
+                ];
+                broadcast(new RegisterUserEvent($user, $msg));
+            }
+        }
 
         return response()->json([
             'message' => '登陆成功',
+            'firstLogin' => $firstLogin,
             'user' => [
                 'id' => $user->id,
                 'username' => $user->username,
@@ -118,6 +145,7 @@ class RegisterController extends Controller
                 'user_type' => $user->user_type,
                 'APP_URL' => env('APP_URL'),
                 'user_type2' => (int)$user->bak_5, //底部版权状态
+                'membertime' => $user->membertime,
             ],
             'data' => json_decode((string)$this->getToken(), true),
         ], 200);

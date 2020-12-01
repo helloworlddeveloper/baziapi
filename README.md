@@ -20,15 +20,13 @@ php artisan ide-helper:meta
 {{Route::currentRouteAction()}}
 {{Request::path()}}
 ````
-
-php artisan passport:install
-
 php artisan make:migration create_add_users_isfoot_table
 
-php artisan db:seed --class=AdminSeeder
-
 php artisan storage:link
-
+php artisan db:seed --class=AdminSeeder
+php artisan passport:install
+php artisan passport:install --force
+php artisan passport:client --password --provider
 来执行未执行过的迁移
 php artisan migrate
 
@@ -88,8 +86,7 @@ git config --global http.proxy "127.0.0.1:12000"
         proxy_set_header X-Forwarded-For $remote_addr;
     }   
 ````
-php artisan passport:install --force
-php artisan passport:client --password --provider
+
 
 {
   "name": "echo",
@@ -131,3 +128,8 @@ pm2 restart echo
 </div>
 
 </div>
+
+既然不想保留本地的修改，那好办。直接将本地的状态恢复到上一个commit id 。然后用远程的代码直接覆盖本地就好了。
+
+git reset --hard 
+git pull origin master
